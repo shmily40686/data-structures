@@ -53,23 +53,29 @@ btreeMethods.contains = function(target) {
 
 
 btreeMethods.depthFirstLog = function(target) {
-  debugger;
-  var value = this.value
 
-  var recurse = function(value) {
-    if(value === null) {
-      return
-    };
-
-    target.apply(this, arguments)
-     
- return recurse(this.left)
-    // recurse(this.right)
+  var recurse = function(node) {
+    if(node === null) {
+      return;
+    }
+    target(node.value);
+     recurse(node.left);
+     recurse(node.right);
+    }
+    recurse(this);
   };
 
-recurse(value)
+// recurse(value)
+  // var recurse = function (node){
+  //   if(node === null){
+  //    return ;
+  //   }
+  //   target(node.value);
+  //   recurse(node.left);
+  //   recurse(node.right);
+  // }
+  //  recurse(this);
 
-};
 
 
 
